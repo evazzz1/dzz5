@@ -14,13 +14,11 @@ findMinArray(myArray);
         
 int [,] rndArray(int [,] myArr)
 {
-    int sumOfArray = 0;
     for (int i = 0; i < myArr.GetLength(0); i++)
     {
         for (int j = 0; j < myArr.GetLength(1); j++)
         {
             myArr[i,j] = rand.Next(1,10);
-            sumOfArray += myArr[i,j];
         }
     }
     return myArr;
