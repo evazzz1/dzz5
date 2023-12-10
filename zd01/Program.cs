@@ -11,10 +11,11 @@ Console.WriteLine("Введите y:");
 string ystr = Console.ReadLine();
 int ypoint = checkIfNum(ystr); //(x,y) значение y
 Console.WriteLine();
+Random rand = new Random();
 
 
-int x = new Random().Next(1,5);
-int y = new Random().Next(1,5);
+int x = rand.Next(1,5);
+int y = rand.Next(1,5);
 int [,] myArray = new int [x,y]; 
 myArray = rndArray(myArray);
 printArray(myArray);
@@ -28,7 +29,7 @@ int [,] rndArray(int [,] myArr)
     {
         for (int j = 0; j < myArr.GetLength(1); j++)
         {
-            myArr[i,j] = new Random().Next(1,10);
+            myArr[i,j] = rand.Next(1,10);
         }
     }
     return myArr;
