@@ -9,8 +9,9 @@ int y = rand.Next(1,5);
 int [,] myArray = new int [x,y]; 
 myArray = rndArray(myArray);
 printArray(myArray);
-int positioonOfPoint = checkArray(myArray, xpoint, ypoint);
-Console.WriteLine("Значение элемента по координатам = "+ positioonOfPoint);
+myArray = changeArray(myArray);
+Console.WriteLine();
+printArray(myArray);
         
         
 int [,] rndArray(int [,] myArr)
@@ -36,4 +37,14 @@ void printArray(int [,] myArr)
     }
     Console.WriteLine();
 }
-    
+int temp = 0;
+int [,] changeArray (int [,] myArr)
+{
+        for(int j = 0; j < myArr.GetLength(1); j++)
+        {
+            temp = myArr[0,j];
+            myArr[0,j] = myArr[myArr.GetLength(0)-1,j];
+            myArr[myArr.GetLength(0)-1,j] = temp;
+        }
+    return myArr;
+}
