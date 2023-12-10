@@ -13,7 +13,6 @@ int ypoint = checkIfNum(ystr); //(x,y) значение y
 Console.WriteLine();
 Random rand = new Random();
 
-
 int x = rand.Next(1,5);
 int y = rand.Next(1,5);
 int [,] myArray = new int [x,y]; 
