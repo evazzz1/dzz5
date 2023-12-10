@@ -1,7 +1,4 @@
-﻿//не полная версияя
-
-
-
+﻿
 //Задача 4*(не обязательная): Задайте двумерный массив
 //из целых чисел. Напишите программу, которая удалит
 //строку и столбец, на пересечении которых расположен
@@ -48,12 +45,12 @@ void printArray(int [,] myArr)
 int [,] getNewArray (int [,] newArray,int [,] myArray)
 {
     int min = myArray[0,0];
-int minX = 0; int minY = 0;
-for (int i = 0; i < myArray.GetLength(0); i++)
-    {
-        for (int j = 0; j < myArray.GetLength(1); j++)
+    int minX = 0; int minY = 0;
+    for (int i = 0; i < myArray.GetLength(0); i++)
         {
-            if(myArray[i,j] < min)
+            for (int j = 0; j < myArray.GetLength(1); j++)
+            {
+                if(myArray[i,j] < min)
             {
                 min = myArray[i,j];
                 minX = i;
@@ -62,36 +59,38 @@ for (int i = 0; i < myArray.GetLength(0); i++)
         }
        
     }
-Console.WriteLine("Минимальное число: " + min + " на координатах: x = " + minX + ", y = " + minY);
+    Console.WriteLine("Минимальное число: " + min + " на координатах: x = " + minX + ", y = " + minY);
 
-for (int i = 0; i < myArray.GetLength(0); i++)
-    {
-        for (int j = 0; j < myArray.GetLength(1); j++)
+    for (int i = 0; i < myArray.GetLength(0); i++)
         {
-            myArray[minX, j] = 0;
-        }
-       myArray[i, minY] = 0;
-    }
-printArray(myArray);
-int xId = 0;
-int yId = 0;
-    for (int i = 0; i < newArray.GetLength(0); i++)
-    {
-        if(i != minX)
-        {
-        for (int j = 0; j < newArray.GetLength(1); j++)
-        {
-            if(j != minY)
-            {             
-                newArray[xId,yId] = myArray[i,j]; 
-                 yId++;
+            for (int j = 0; j < myArray.GetLength(1); j++)
+            {
+                myArray[minX, j] = 0;
             }
-            
+        myArray[i, minY] = 0;
         }
-        xId++;
+    printArray(myArray); //решила оставить вам некоторые пояснения, в общем, я не придумала как сразу переставить элементы в другой
+                        //поэтому я заменила на нули пересечения, и решила уже отсюда убирать нули. намудрила я конечно, надеюсь вам будет понятно..
+
+    int newRow = 0;
+    for (int i = 0; i < myArray.GetLength(0); i++)
+        {
+            int newColumn = 0;
+            for (int j = 0; j < myArray.GetLength(1); j++)
+            {
+                if (myArray[i, j] != 0)
+                {
+                    newArray[newRow, newColumn] = myArray[i, j];
+                    newColumn++;
+                }
+            }
+
+            if (newColumn > 0)
+            {
+                newRow++;
+            }
         }
-       
-    }
 
 return newArray; 
 }
+
